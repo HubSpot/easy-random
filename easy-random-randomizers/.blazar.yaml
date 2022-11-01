@@ -1,3 +1,6 @@
+buildpack:
+  name: Blazar-Buildpack-Java
+
 enabled: true
 
 provides:
@@ -10,8 +13,3 @@ depends:
 env:
   SET_VERSION_OVERRIDE: 5.0.1-$GIT_BRANCH-SNAPSHOT
 
-buildpack:
-  host: git.hubteam.com
-  organization: HubSpotProtected
-  repository: Blazar-Buildpack-Java
-  branch: v2

@@ -1,3 +1,6 @@
+buildpack:
+  name: Blazar-Buildpack-Java
+
 enabled: true
 
 provides:
@@ -10,8 +13,3 @@ env:
 depends:
   - easy-random-tests
 
-buildpack:
-  host: git.hubteam.com
-  organization: HubSpotProtected
-  repository: Blazar-Buildpack-Java
-  branch: v2
