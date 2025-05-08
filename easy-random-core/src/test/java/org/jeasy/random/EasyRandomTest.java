@@ -61,6 +61,8 @@ import org.jeasy.random.util.ReflectionUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledForJreRange;
+import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -251,6 +253,10 @@ class EasyRandomTest {
     }
 
     @Test
+    @DisabledForJreRange(
+            disabledReason = "Fails on jdk 17+, see https://github.com/j-easy/easy-random/issues/494",
+            min = JRE.JAVA_16
+    )
     void fieldsOfTypeClassShouldBeSkipped() {
         try {
             TestBean testBean = easyRandom.nextObject(TestBean.class);

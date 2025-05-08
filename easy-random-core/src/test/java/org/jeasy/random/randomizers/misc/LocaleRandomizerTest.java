@@ -23,14 +23,13 @@
  */
 package org.jeasy.random.randomizers.misc;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.jeasy.random.randomizers.AbstractRandomizerTest;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.Locale;
 
-import org.junit.jupiter.api.Test;
-
-import org.jeasy.random.randomizers.AbstractRandomizerTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class LocaleRandomizerTest extends AbstractRandomizerTest<Locale> {
 
@@ -42,7 +41,9 @@ class LocaleRandomizerTest extends AbstractRandomizerTest<Locale> {
     @Test
     void shouldGenerateTheSameValueForTheSameSeed() {
         BigDecimal javaVersion = new BigDecimal(System.getProperty("java.specification.version"));
-        if (javaVersion.compareTo(new BigDecimal("14")) >= 0) {
+        if (javaVersion.compareTo(new BigDecimal("17")) >= 0) {
+            assertThat(new LocaleRandomizer(SEED).getRandomValue()).isEqualTo(new Locale("mni", ""));
+        } else if (javaVersion.compareTo(new BigDecimal("14")) >= 0) {
             assertThat(new LocaleRandomizer(SEED).getRandomValue()).isEqualTo(new Locale("rn", "BI"));
         } else if (javaVersion.compareTo(new BigDecimal("13")) >= 0) {
             assertThat(new LocaleRandomizer(SEED).getRandomValue()).isEqualTo(new Locale("zh", "CN"));
